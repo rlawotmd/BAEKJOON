@@ -7,7 +7,5 @@ public class BAEKJOON2743 {
         Scanner sc = new Scanner(System.in);
         String s = br.readLine();
         System.out.println(s.length());
-        //StringTokenizer st = new StringTokenizer(s);
-
         }
 }
