@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class BAEKJOON27433 {
     public static void main(String[] args) {
         BigInteger[] arr = new BigInteger[21];
-        BigInteger fec = BigInteger.valueOf(1);
+
         arr[0] = BigInteger.valueOf(1);
         arr[1] = BigInteger.valueOf(1);
         for(int i = 2; i <= 20; i++) {
