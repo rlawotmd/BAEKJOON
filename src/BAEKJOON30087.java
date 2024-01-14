@@ -16,6 +16,7 @@ public class BAEKJOON30087 {
             if(s.equalsIgnoreCase("Network")) System.out.println("303");
             if(s.equalsIgnoreCase("Startup")) System.out.println("501");
             if(s.equalsIgnoreCase("TestStrategy")) System.out.println("105");
+            //test commit
         }
     }
 }
