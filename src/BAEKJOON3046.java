@@ -6,5 +6,6 @@ public class BAEKJOON3046 {
         int n = sc.nextInt();
         int m = sc.nextInt();
         System.out.println(((m * 2) - n));
+        // 넌 되냐?
     }
 }
