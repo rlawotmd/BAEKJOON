@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class BAEKJOON1264 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = 0;
-        int a = 0;
+        int n;
+        int a;
         while(true) {
             String s = sc.nextLine();
             if(s.trim().equals("#")) System.exit(0);
