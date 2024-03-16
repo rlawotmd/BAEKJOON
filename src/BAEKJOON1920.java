@@ -1,34 +1,38 @@
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BAEKJOON1920 {
+    public static boolean binary(int n, int[] arr, int key) {
+        int low = 0;
+        int high = n - 1;
+        int mid;
+        for(int i = 0; i < 21; i++) {
+            mid = (low + high) / 2;
+            if (key == arr[mid]) return true;
+            else if (key < arr[mid]) high = mid - 1;
+            else low = mid + 1;
+        }
+        return false;
+    }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
+
         int n = Integer.parseInt(br.readLine());
-        String[] arr_a = new String[n];
-        st = new StringTokenizer(br.readLine());
+        int[] arr = new int[n];
+        st = new StringTokenizer(br.readLine(), " ");
         for(int i = 0; i < n; i++) {
-            arr_a[i] = st.nextToken();
+            arr[i] = Integer.parseInt(st.nextToken());
         }
+        Arrays.sort(arr);
 
         int m = Integer.parseInt(br.readLine());
-        String[] arr_b = new String[m];
-        st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine(), " ");
         for(int i = 0; i < m; i++) {
-            arr_b[i] = st.nextToken();
-        }
-        for(int i = 0; i < m; i++) {
-            //String s = st.nextToken();
-            if (arr_a.equals(arr_b[i])) {
-                bw.write("1\n");
-            } else {
-                bw.write("0\n");
-            }
+            int key = Integer.parseInt(st.nextToken());
+            if(binary (n, arr, key)) bw.write("1\n");
+            else bw.write("0\n");
         }
         bw.flush();
     }
