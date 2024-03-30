@@ -17,7 +17,7 @@ public class BAEKJOON11650 {
             arr[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(arr);
+        Arrays.sort(arr, ((o1, o2) -> (o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0])));
 
         for(int i = 0; i < n; i++) {
             System.out.println(arr[i][0] + " " + arr[i][1]);
