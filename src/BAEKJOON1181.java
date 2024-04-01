@@ -26,6 +26,7 @@ public class BAEKJOON1181 {
 
         for (int i = 0; i < new_arr.length; i++) {
             System.out.println(new_arr[i]);
+
         }
 
     }
