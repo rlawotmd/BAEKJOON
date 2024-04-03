@@ -6,17 +6,17 @@ public class BAEKJOON1874 {
     static StringBuffer sb = new StringBuffer();
     static Stack<Integer> stack = new Stack<>();
 
-    static void push(int n) throws IOException {
+    static void push(int n) {
         stack.push(n);
         sb.append("+\n");
     }
 
-    static void pop() throws IOException {
+    static void pop() {
         stack.pop();
         sb.append("-\n");
     }
 
-    static int search(int n, int[] arr) throws IOException {
+    static int search(int n, int[] arr) {
         int point = 0;
         int num = 1;
         while (true) {
