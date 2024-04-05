@@ -33,7 +33,7 @@ public class BAEKJOON11866 {
             }
         }
 
-        System.out.println(sb.toString() + ">");
+        System.out.println(sb + ">");
 
 
 
