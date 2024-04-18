@@ -52,12 +52,6 @@ public class BAEKJOON18111 {
             else if (spend_time == time && max < h) max = h;
         }
 
-
         System.out.println(time + " " + max);
     }
 }
-/*
-1 7 10
-65 64 64 64 63 62 0
-// 148 56
- */
