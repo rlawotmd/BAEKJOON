@@ -2,7 +2,7 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
-public class BAEKJOON15650 {
+public class BAEKJOON15652 {
 	static int N, R;
 	static int[] a, b;
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
