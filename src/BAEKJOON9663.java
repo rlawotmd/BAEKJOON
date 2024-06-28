@@ -1,48 +1,38 @@
-import java.io.*;
-import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class BAEKJOON9663 {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    static boolean[] used;
-    static int[] num_arr;
-    static int[] arr;
-    static int n, m;
+    static int n;
+    static int[] a;
+    static int ans;
 
-    public static void fuc(int loc) throws IOException {
-        if (m == loc) {
-            for (int num : arr) {
-                bw.write(num + " ");
-            }
-            bw.write("\n");
+    static boolean able(int No) {
+        for (int i = 0; i < No; i++) {
+            if (a[No] == a[i] || Math.abs(a[No] - a[i]) == No - i) return false;
+        }
+        return true;
+    }
+
+    static void queen(int No) {
+        if (No == n) {
+            ans++;
             return;
         }
-
         for (int i = 0; i < n; i++) {
-            if (used[i]) continue;
-            used[i] = true;
-
-            arr[loc] = num_arr[i];
-            fuc(loc + 1);
-
-            used[i] = false;
+            a[No] = i;
+            if (able(No)) queen(No + 1);
         }
     }
 
     public static void main(String[] args) throws IOException {
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        a = new int[n];
+        ans = 0;
 
-        num_arr = new int[n];
-        used = new boolean[n];
-        arr = new int[m];
+        queen(0);
 
-        for (int i = 0; i < n; i++) {
-            num_arr[i] = i + 1;
-        }
-
-        fuc(0);
-        bw.flush();
+        System.out.println(ans);
     }
 }
