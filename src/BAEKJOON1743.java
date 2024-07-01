@@ -1,4 +1,5 @@
 // BFS
+// DFS
 
 import java.io.*;
 import java.util.*;
@@ -9,6 +10,7 @@ public class BAEKJOON1743 {
     static int n, m, k, max = 0;
     static int[] di = {-1, 0, 1, 0};
     static int[] dj = {0, 1, 0, -1};
+    static int size; // DFS
 
     static void BFS(int x, int y) {
         int size = 0;
@@ -30,7 +32,14 @@ public class BAEKJOON1743 {
     }
 
     static void DFS(int x, int y) {
-
+        v[x][y] = true;
+        size++;
+        for (int i = 0; i < 4; i++) {
+            int dx = x + di[i];
+            int dy = y + dj[i];
+            if (dx < 0 || dy < 0 || dx >= n || dy >= m || v[dx][dy] || a[dx][dy] != 1) continue;
+            DFS(dx, dy);
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -48,30 +57,17 @@ public class BAEKJOON1743 {
             st = new StringTokenizer(br.readLine(), " ");
             a[Integer.parseInt(st.nextToken()) - 1][Integer.parseInt(st.nextToken()) - 1] = 1;
         }
-        for (int[] bbb : a) System.out.println(Arrays.toString(bbb));
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (v[i][j] || a[i][j] != 1) continue;
-//                DFS(i, j);
-                BFS(i, j);
+                size = 0;
+                DFS(i, j);
+                max = Math.max(max, size);
+//                BFS(i, j);
             }
         }
 
         System.out.println(max);
     }
 }
-
-/*
-3 4 9
-1 1
-2 1
-3 1
-3 2
-3 3
-3 4
-2 4
-1 4
-1 3
-ans = 9
- */
