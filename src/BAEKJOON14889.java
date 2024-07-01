@@ -6,63 +6,61 @@ import java.util.StringTokenizer;
 
 public class BAEKJOON14889 {
     static int[][] a;
-    static boolean[][] v;
-    static int max_cnt = 0;
-    static final int[] around_i = {1, 0, -1, 0};
-    static final int[] around_j = {0, 1, 0, -1};
+    static int[] s, l, all;
+    static boolean[] v;
+    static int n, sT, lT;
+    static int min = Integer.MAX_VALUE;
 
-    static void dfs(int i, int j, int t) {
-        v[i][j] = false;
-        for (int d = 0; d < 4; d++) {
-            int di = i + around_i[d];
-            int dj = j + around_j[d];
-            if (0 <= di && di < a.length && 0 <= dj && dj < a.length && a[di][dj] > t && v[di][dj]) {
-                dfs(di, dj, t);
+    static void subTeam(int cnt, int start) {
+        if (cnt == n / 2) {
+            int p = 0;
+            sT = 0; lT = 0;
+            for (int i = 0; i < n; i++) {
+                if (v[i]) continue;
+                l[p++] = all[i];
             }
+
+            for (int i = 0; i < n / 2; i++) {
+                for (int j = 0; j < n / 2; j++) {
+                    sT += a[s[i]][s[j]];
+                    lT += a[l[i]][l[j]];
+                }
+            }
+
+            min = Math.min(min, (Math.max(sT, lT) - Math.min(sT, lT)));
+            return;
+        }
+        for (int i = start; i < n; i++) {
+            if (v[i]) continue;
+            v[i] = true;
+            s[cnt] = all[i];
+            subTeam(cnt + 1, i + 1);
+            v[i] = false;
         }
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-        int n = Integer.parseInt(br.readLine());
+
+        n = Integer.parseInt(br.readLine());
         a = new int[n][n];
-        v = new boolean[n][n];
-        int max = 0;
+        all = new int[n];
+        v = new boolean[n];
+        s = new int[n / 2];
+        l = new int[n / 2];
+
         for (int i = 0; i < n; i++) {
+            all[i] = i;
             st = new StringTokenizer(br.readLine(), " ");
             for (int j = 0; j < n; j++) {
                 a[i][j] = Integer.parseInt(st.nextToken());
-                max = Math.max(max, a[i][j]);
-                v[i][j] = true;
             }
         }
 
-        for (int t = -1; t < max; t++) {
-            int cnt = 0;
+        subTeam(0, 0);
 
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (a[i][j] > t && v[i][j]) {
-                        cnt++;
-                        dfs(i, j, t);
-                    }
-                }
-            }
-
-            max_cnt = Math.max(cnt, max_cnt);
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    v[i][j] = true;
-                }
-            }
-        }
-
-        System.out.println(max_cnt);
-
-
-
-
+        System.out.println(min);
 
     }
 }
