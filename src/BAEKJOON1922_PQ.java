@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class BAEKJOON1922 {
+public class BAEKJOON1922_PQ {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
