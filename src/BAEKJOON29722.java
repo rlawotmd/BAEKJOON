@@ -12,11 +12,10 @@ public class BAEKJOON29722 {
         int d = Integer.parseInt(st.nextToken());
         int n = Integer.parseInt(br.readLine());
         d += n;
-        m += (d / 30);
-        d = d % 30;
-        y += (m / 12);
-        m = m % 12;
-        if (m == 0) m = 12;
+        m = m + ((d - 1) / 30);
+        d = (d - 1) % 30 + 1;
+        y = y + ((m - 1) / 12);
+        m = (m - 1) % 12 + 1;
 
         StringBuilder sb = new StringBuilder();
         sb.append(y + "-");
