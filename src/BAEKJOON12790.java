@@ -13,9 +13,9 @@ public class BAEKJOON12790 {
             int f = sc.nextInt();
             int g = sc.nextInt();
             int h = sc.nextInt();
-            int sum = a + e;
-            sum += 5 * (b + f);
-            sum += 2 * (c + g);
+            int sum = (Math.max((a + e), 1));
+            sum += 5 * Math.max(1, b + f);
+            sum += 2 * Math.max(0, c + g);
             sum += 2 * (d + h);
             System.out.println(sum);
         }
